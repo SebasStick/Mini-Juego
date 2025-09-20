@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "Mini Juego 1";
+}
+<h1>Mini Juego 1: Adivina el número</h1>
+<link rel="stylesheet" href="/css/site.css" />
+
+<form method="post">
+    <div class="game-container">
+        <label for="maxNumber">Número máximo:</label>
+        <input type="number" id="maxNumber" name="maxNumber" value="@(ViewBag.MaxNumber ?? "")" min="1" required />
+        <button type="submit">Establecer límite</button>
+    </div>
+</form>
+
+@if (ViewBag.MaxNumber != null && ViewBag.MaxNumber > 0)
+{
+    <form method="post">
+        <div class="game-container">
+            <input type="hidden" name="maxNumber" value="@ViewBag.MaxNumber" />
+            <input type="hidden" name="randomNumber" value="@(ViewBag.RandomNumber ?? new System.Random().Next(0, (int)ViewBag.MaxNumber + 1))" />
+            <label for="guess">Adivina el número (entre 0 y @ViewBag.MaxNumber):</label>
+            <input type="number" id="guess" name="guess" min="0" max="@ViewBag.MaxNumber" required />
+            <button type="submit">Adivinar</button>
+        </div>
+    </form>
+}
+
+@if (ViewBag.Message != null)
+{
+    <div class="result-message">@ViewBag.Message</div>
+}
+
+<style>
+    .game-container {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        max-width: 400px;
+    }
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+    .result-message {
+        font-size: 1.2em;
+        color: #333;
+        margin-top: 10px;
+        background: #e2e2e2;
+        padding: 10px;
+        border-radius: 6px;
+    }
+</style>
