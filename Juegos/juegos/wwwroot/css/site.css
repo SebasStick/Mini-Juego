@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e0d0d0;
+    border-color: aqua ;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #c90909;
+    text-align: center;
+    margin: 15px;
+    border-color: blue;
+}   
+
+
+/* Estilos para el juego 1 */
+.game-container {
+    background: rgb(163, 150, 150);
+    padding: 20px;
+    border-radius: 8px ;
+    border-color: #d80808;
+    height: 300px;
+    width: 400px;
+    box-shadow: 0 2px 8px rgba(202, 3, 3, 0.1);
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.result-message {
+    font-size: 1.2em;
+    color: #d80808;
+    margin-top: 10px;
+    background: #e2e2e2;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Botones del menú principal */
+.menu-btn {
+    position:relative;
+    left: 35%;
+    display: inline-block;
+    background: #007bff;
+    color: #fff !important;
+    padding: 12px 32px;
+    margin: 20px;
+    border-color: #d80808;
+    border: 2px solid #0056b3;
+    border-radius: 6px;
+    font-size: 1.1em;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: background 0.2s, color 0.2s;
+    border: none;
+}
+
+.menu-btn:hover {
+    background: #0056b3;
+    color: #e0d0d0 !important;
+    text-decoration: none;
+}

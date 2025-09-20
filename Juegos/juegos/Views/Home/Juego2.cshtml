@@ -1,0 +1,51 @@
+@{
+    ViewData["Title"] = "Mini Juego 2";
+    var terminado = ViewBag.Terminado ?? false;
+    var intentos = ViewBag.Intentos as List<string> ?? new List<string>();
+}
+<link rel="stylesheet" href="~/css/site.css" />
+
+<body>
+    <header>
+        <h1>Mini Juego 2: Adivina el número avanzado</h1>
+    </header>
+
+    @if (!terminado)
+    {
+        <form method="post">
+            <div class="game-container">
+                <label for="nivel">Nivel de dificultad:</label>
+                <select id="nivel" name="nivel" required>
+                    <option value="1" @(ViewBag.Nivel == null || ViewBag.Nivel == 1 ? "selected" : "")>Nivel 1 (10 intentos)</option>
+                    <option value="2" @(ViewBag.Nivel == 2 ? "selected" : "")>Nivel 2 (5 intentos)</option>
+                    <option value="3" @(ViewBag.Nivel == 3 ? "selected" : "")>Nivel 3 (3 intentos)</option>
+                </select>
+                <label for="maxNumber">Número máximo:</label>
+                <input type="number" id="maxNumber" name="maxNumber" value="@(ViewBag.MaxNumber ?? "")" min="1" required />
+                <label for="maxIntentos">Número máximo de intentos (opcional):</label>
+                <input type="number" id="maxIntentos" name="maxIntentos" value="@(ViewBag.MaxIntentos ?? "")" min="1" />
+                <input type="hidden" name="randomNumber" value="@ViewBag.RandomNumber" />
+                @if (intentos.Count > 0)
+                {
+                    foreach (var intento in intentos)
+                    {
+                        <div>Intento: @intento</div>
+                    }
+                }
+                <label for="guess">Adivina el número (o escribe 'S' para salir):</label>
+                <input type="text" id="guess" name="guess" required />
+                <button type="submit">Adivinar</button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="game-container">
+            <div class="result-message">@ViewBag.Message</div>
+            <form method="get">
+                <button type="submit" formaction="/Home/Juego2">Volver a empezar</button>
+                <a class="menu-btn" href="/Home/Index">Volver al menú</a>
+            </form>
+        </div>
+    }
+</body>
